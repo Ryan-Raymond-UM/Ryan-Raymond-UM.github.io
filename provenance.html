@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Provenance</title>
+		<!-- Just temporary fix to prevent browser from requesting favicon -->
+		<link rel="icon" href="data:image/png;base64,iVBORw0KGgo=">
+		<script src="https://cdn.jsdelivr.net/npm/phash-js/dist/phash.js">
+		</script>
+		<script src="https://unpkg.com/helia/dist/index.min.js"></script>
+		<script src="https://unpkg.com/@helia/unixfs/dist/index.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/web3@4.16.0/dist/web3.min.js">
+		</script>
+		<script src="toggles.js"></script>
+		<script src="handlers.js"></script>
+		<script src="helpers.js"></script>
+		<script src="provenance.js"></script>
+	</head>
+	<body>
+		<h1>Provenance</h1>
+		<h2>UM Flint CYB520 Term Project</h2>
+		<h1 style="display: none;" id="wait">Please Wait...</h1>
+		<article id="provenance">
+			<div>
+				<button id="connect-wallet" disabled>Connect Wallet</button>
+				<select id="account-selector"disabled>
+					<option selected>Select an Account</option>
+				</select>
+			</div>
+			<div>
+				<input type="file" accept="image/*" id="file" disabled></input>
+			</div>
+			<div>
+				<img src="none.svg" alt="Upload an image to see a preview here"
+					style="max-width: 500px; max-height: 500px;" id="image-preview">
+			</div>
+			<div>
+				<div>
+					<button id="mint" disabled>Mint
+						(<span id="minting-fee-eth">unknown</span> ETH /
+						<span id="minting-fee-usd">unknown</span> USD)
+					</button>
+				</div>
+				<div>
+					<button id="buy" disabled>Buy This NFT</button>
+				</div>
+				<div>
+					<button id="sell" disabled>Offer for Sale</button>
+					<input type="number" id="price" disabled></input>
+					<span>Wei</span>
+					<!--<span><span id="ask-price-preview-usd">unknown</span> USD</span>-->
+				</div>
+				<div>
+					<button id='de-list' disabled>Remove from Market</button>
+				</div>
+			</div>
+			<table>
+				<tr><th>Hash</th><td><span id="hash"></span></td></tr>
+				<tr><th>IPFS CID</th><td><span id="CID"></span></td></tr>
+				<!--<tr><th>Owned</th><td><span id="owned"></span></td></tr>-->
+				<tr><th>Owner</th><td><span id="owner"></span></td></tr>
+				<tr><th>For Sale</th><td><span id="for-sale"></span></td></tr>
+				<tr><th>Asking Price</th><td><span id="ask-price">unknown</span> <span>Wei</span></td></tr>
+			</table>
+			<div>
+				<label for="copyright-holder">Copyright Holder</label>
+				<input disabled type="text" id="copyright-holder"></input>
+			</div>
+			<div>
+				<label for="include-CID">Include CID</label>
+				<input disabled type="checkbox" id="include-CID"></input>
+			</div>
+			<form id='license'>
+				<div>
+					<input disabled type="radio" name="license" id="license-all-rights-reserved" value="All Rights Reserved"></input>
+					<label for="license-all-rights-reserved">All Rights Reserved</label>
+				</div>
+				<div>
+					<input disabled type="radio" name="license" id="license-CC-BY" value="CC-BY"></input>
+					<label for="license-CC-BY">Creative Commons, With Attribution</label>
+				</div>
+				<div>
+					<input disabled type="radio" name="license" id="license-CC-NC" value="CC-NC"></input>
+					<label for="license-CC-NC">Creative Commons, Non-Commercial</label>
+				</div>
+				<div>
+					<input disabled type="radio" name="license" id="license-CC-ND"value="CC-ND"></input>
+					<label for="license-CC-ND">Creative Commons, No Derivative Works</label>
+				</div>
+			</form>
+			<h3>OR</h3>
+			<div>
+				<label for="custom-url">Custom URL</label>
+				<input disabled type="url" id="custom-url"></input>
+			</div>
+			<div>
+				<button disabled id='update-metadata'>Update Metadata</button>
+			</div>
+			<blockquote><pre id='metadata'></pre></blockquote>
+		</article>
+	</body>
+</html>
